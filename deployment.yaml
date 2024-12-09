@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: myt-tugas-pnt
+        app: my-tugas-pnt
     spec:
       containers:
       - name: tugas-pnt

@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-tugas-pnt-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - tugas-pnt.my.id
+    secretName: my-tugas-pnt-tls
+  rules:
+  - host: tugas-pnt.my.id
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-tugas-pnt-service
+            port:
+              number: 80
+      - path: /bumi
+        pathType: Prefix
+        backend:
+          service:
+            name: my-tugas-pnt-service
+            port:
+              number: 80
+      - path: /mars
+        pathType: Prefix
+        backend:
+          service:
+            name: my-tugas-pnt-service
+            port:
+              number: 80
